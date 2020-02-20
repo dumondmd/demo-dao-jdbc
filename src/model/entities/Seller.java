@@ -2,11 +2,11 @@ package model.entities;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.Objects;
 
 public class Seller implements Serializable {
 
     private static final long serialVersionUID = 1L;
+
     private Integer id;
     private String name;
     private String email;
@@ -77,9 +77,10 @@ public class Seller implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 61 * hash + Objects.hashCode(this.id);
-        return hash;
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((id == null) ? 0 : id.hashCode());
+        return result;
     }
 
     @Override
@@ -93,8 +94,12 @@ public class Seller implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Seller other = (Seller) obj;
-        if (!Objects.equals(this.id, other.id)) {
+        Seller other = (Seller) obj;
+        if (id == null) {
+            if (other.id != null) {
+                return false;
+            }
+        } else if (!id.equals(other.id)) {
             return false;
         }
         return true;
@@ -102,7 +107,7 @@ public class Seller implements Serializable {
 
     @Override
     public String toString() {
-        return "Seller{" + "id=" + id + ", name=" + name + ", email=" + email + ", birthDate=" + birthDate + ", baseSalary=" + baseSalary + ", department=" + department + '}';
+        return "Seller [id=" + id + ", name=" + name + ", email=" + email + ", birthDate=" + birthDate + ", baseSalary="
+                + baseSalary + ", department=" + department + "]";
     }
-
 }
